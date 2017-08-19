@@ -45,11 +45,11 @@ class LearningAgent(Agent):
 
 
         
-        # a = 0.95
+        a = 0.99
         self.currStep += 1.0
         t = self.currStep
-        self.epsilon = self.epsilon - 0.002
-        # self.epsilon = pow(a,t)
+        # self.epsilon = self.epsilon - 0.002
+        self.epsilon = pow(a,t)
         # self.epsilon = 1 / (pow(t,2))
         # self.epsilon = pow(math.e,(-a * t))
 
@@ -221,7 +221,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run( n_test = 20 , tolerance = .001)
+    sim.run( n_test = 20 , tolerance = .01)
 
 
 if __name__ == '__main__':
