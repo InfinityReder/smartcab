@@ -82,7 +82,7 @@ class LearningAgent(Agent):
             waypoint, 
             inputs['light'], 
             inputs['left'], 
-            inputs['right'], 
+            # inputs['right'], 
             inputs['oncoming'] 
         )
 
