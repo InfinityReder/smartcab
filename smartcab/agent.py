@@ -45,12 +45,12 @@ class LearningAgent(Agent):
 
 
         
-        a = 0.9
+        a = 0.8
         self.currStep += 1.0
         t = self.currStep
         # self.epsilon = self.epsilon - 0.05
-        self.epsilon = pow(a,t)
-        # self.epsilon = 1 / (pow(t,2))
+        # self.epsilon = pow(a,t)
+        self.epsilon = 1 / (pow(t,2))
         # self.epsilon = pow(math.e,(-a * t))
         # self.epsilon = math.cos( a * t )
 
@@ -142,9 +142,6 @@ class LearningAgent(Agent):
                 action = random.choice( self.valid_actions )
             else:
                 action = [ s for s in cq.keys() if cq[s] == self.get_maxQ(state)][0]
-                print ('hhhhhaaaaaaa')
-                print (self.Q[state])
-                print (action)
         
         # print ('--------choose_action')c
 
@@ -192,7 +189,7 @@ def run():
     #   verbose     - set to True to display additional output from the simulation
     #   num_dummies - discrete number of dummy agents in the environment, default is 100
     #   grid_size   - discrete number of intersections (columns, rows), default is (8, 6)
-    env = Environment(verbose = True)
+    env = Environment(verbose = False)
     
     ##############
     # Create the driving agent
@@ -200,7 +197,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning = True, epsilon = 1, alpha = .9)
+    agent = env.create_agent(LearningAgent, learning = True, epsilon = 1, alpha = .8)
     
     ##############
     # Follow the driving agent
@@ -215,7 +212,7 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay = .01, log_metrics = True, display = False, optimized = True)
+    sim = Simulator(env, update_delay = .01, log_metrics = True, display = True, optimized = True)
     
     ##############
     # Run the simulator
