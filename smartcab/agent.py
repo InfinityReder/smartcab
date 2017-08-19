@@ -45,13 +45,13 @@ class LearningAgent(Agent):
 
 
         
-        a = 0.8
+        a = 0.9
         self.currStep += 1.0
         t = self.currStep
         # self.epsilon = self.epsilon - 0.05
         # self.epsilon = pow(a,t)
-        self.epsilon = 1 / (pow(t,2))
-        # self.epsilon = pow(math.e,(-a * t))
+        # self.epsilon = 1 / (pow(t,2))
+        self.epsilon = pow(math.e,(-a * t))
         # self.epsilon = math.cos( a * t )
 
         if testing:
