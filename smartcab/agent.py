@@ -45,13 +45,15 @@ class LearningAgent(Agent):
 
 
         
-        a = 0.9
+        # a = 0.95
         self.currStep += 1.0
         t = self.currStep
-        # self.epsilon = self.epsilon - 0.05
+        self.epsilon = self.epsilon - 0.002
         # self.epsilon = pow(a,t)
         # self.epsilon = 1 / (pow(t,2))
-        self.epsilon = pow(math.e,(-a * t))
+        # self.epsilon = pow(math.e,(-a * t))
+
+        # a = math.pi / 1000
         # self.epsilon = math.cos( a * t )
 
         if testing:
@@ -79,9 +81,9 @@ class LearningAgent(Agent):
         state = ( 
             waypoint, 
             inputs['light'], 
-            # inputs['left'], 
-            # inputs['right'], 
-            # inputs['oncoming'] 
+            inputs['left'], 
+            inputs['right'], 
+            inputs['oncoming'] 
         )
 
         # print ('--------build_state')
@@ -212,14 +214,14 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay = .01, log_metrics = True, display = False, optimized = True)
+    sim = Simulator(env, update_delay = 0.0, log_metrics = True, display = False, optimized = True)
     
     ##############
     # Run the simulator
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run( n_test = 10 , tolerance = .05)
+    sim.run( n_test = 20 , tolerance = .001)
 
 
 if __name__ == '__main__':
