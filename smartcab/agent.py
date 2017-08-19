@@ -45,7 +45,7 @@ class LearningAgent(Agent):
 
 
         
-        a = 0.99
+        a = 0.994
         self.currStep += 1.0
         t = self.currStep
         # self.epsilon = self.epsilon - 0.002
@@ -221,7 +221,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run( n_test = 20 , tolerance = .01)
+    sim.run( n_test = 20 , tolerance = .05)
 
 
 if __name__ == '__main__':
