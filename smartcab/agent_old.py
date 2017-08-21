@@ -136,10 +136,7 @@ class LearningAgent(Agent):
         # When not learning, choose a random action
         # When learning, choose a random action with 'epsilon' probability
         #   Otherwise, choose an action with the highest Q-value for the current state
-        if not self.learning or self.epsilon > random.random():
-            action = random.choice( self.valid_actions )
-        else:
-            action = random.choice( [ s for s in self.Q[state].keys() if self.Q[state][s] == self.get_maxQ(state)] )
+        action = random.choice( self.valid_actions )
 
  
         return action
@@ -208,14 +205,14 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay = .01, log_metrics = True, display = False, optimized = False)
+    sim = Simulator(env, update_delay = 0, log_metrics = True, display = True, optimized = False)
     
     ##############
     # Run the simulator
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run( n_test = 10)
+    sim.run( n_test = 10 , tolerance = .05)
 
 
 if __name__ == '__main__':
