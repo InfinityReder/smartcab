@@ -136,15 +136,11 @@ class LearningAgent(Agent):
         # When not learning, choose a random action
         # When learning, choose a random action with 'epsilon' probability
         #   Otherwise, choose an action with the highest Q-value for the current state
-        cq = self.Q[state]
-        if not self.learning:
+        if not self.learning or self.epsilon > random.random():
             action = random.choice( self.valid_actions )
         else:
-            if self.epsilon > random.random():
-                action = random.choice( self.valid_actions )
-            else:
-                action = [ s for s in cq.keys() if cq[s] == self.get_maxQ(state)][0]
-        
+            action = random.choice( [ s for s in self.Q[state].keys() if self.Q[state][s] == self.get_maxQ(state)] )
+
         # print ('--------choose_action')c
 
  
