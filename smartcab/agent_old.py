@@ -82,7 +82,7 @@ class LearningAgent(Agent):
             waypoint, 
             inputs['light'], 
             inputs['left'], 
-            # inputs['right'], 
+            inputs['right'], 
             inputs['oncoming'] 
         )
 
@@ -205,7 +205,7 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay = 0, log_metrics = True, display = True, optimized = False)
+    sim = Simulator(env, update_delay = 0, log_metrics = True, display = False, optimized = False)
     
     ##############
     # Run the simulator
