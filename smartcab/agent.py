@@ -45,16 +45,16 @@ class LearningAgent(Agent):
 
 
         
-        a = 0.99
+        # a = 0.99
         self.currStep += 1.0
         t = self.currStep
         # self.epsilon = self.epsilon - 0.002
-        self.epsilon = pow(a,t)
+        # self.epsilon = pow(a,t)
         # self.epsilon = 1 / (pow(t,2))
         # self.epsilon = pow(math.e,(-a * t))
 
-        # a = math.pi / 1000
-        # self.epsilon = math.cos( a * t )
+        a = math.pi / 2000
+        self.epsilon = math.cos( a * t )
 
         if testing:
             self.epsilon = 0
@@ -82,7 +82,7 @@ class LearningAgent(Agent):
             waypoint, 
             inputs['light'], 
             inputs['left'], 
-            # inputs['right'], 
+            inputs['right'], 
             inputs['oncoming'] 
         )
 
@@ -195,7 +195,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning = True, epsilon = 1, alpha = .8)
+    agent = env.create_agent(LearningAgent, learning = True, epsilon = 1, alpha = .5)
     
     ##############
     # Follow the driving agent
@@ -217,7 +217,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run( n_test = 20 , tolerance = .03)
+    sim.run( n_test = 20 , tolerance = .27)
 
 
 if __name__ == '__main__':
