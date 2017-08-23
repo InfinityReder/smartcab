@@ -53,7 +53,7 @@ class LearningAgent(Agent):
         # self.epsilon = 1 / (pow(t,2))
         # self.epsilon = pow(math.e,(-a * t))
 
-        a = math.pi / 2000
+        a = math.pi / 1500
         self.epsilon = math.cos( a * t )
 
         if testing:
